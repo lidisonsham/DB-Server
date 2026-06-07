@@ -1,150 +1,120 @@
-# Experiment: AWS Elastic Beanstalk
-## NAME: LIDISON SHAM M
-## REG NO: 212224040171
-## AIM
+#  Build a Database Server (AWS)
 
-* To access the AWS Elastic Beanstalk environment.
-* To deploy a sample application to Elastic Beanstalk.
-* To explore the AWS resources created and managed by Elastic Beanstalk.
+## Author
+
+* **Name**: LIDISON SHAM M
+* **Register Number**: 212224040171
+---
+
+## Objective
+
+The objective of this experiment is to understand how to deploy and configure a database server in AWS. This lab focuses on launching an EC2 instance, installing a database management system (DBMS), configuring basic database settings, creating a sample database, and validating connectivity to the database server.
 
 ---
 
-# PROBLEM STATEMENT
+## Prerequisites
 
-AWS Elastic Beanstalk is a Platform as a Service (PaaS) that simplifies the deployment and management of web applications. It automatically handles infrastructure provisioning, load balancing, auto scaling, monitoring, and application deployment. This experiment demonstrates how to create an Elastic Beanstalk environment, deploy a sample application, and examine the AWS resources supporting the application.
-
----
-
-# ALGORITHM
-
-### Step 1:
-
-Log in to the AWS Management Console and open the Elastic Beanstalk service.
-
-### Step 2:
-
-Click **Create Application** and enter the application name.
-
-### Step 3:
-
-Choose the platform (e.g., Python, Node.js, Java, PHP) and upload or select a sample application.
-
-### Step 4:
-
-Create an environment and wait for Elastic Beanstalk to provision the required AWS resources.
-
-### Step 5:
-
-Access the application URL, verify successful deployment, and explore the associated AWS resources such as EC2 instances, Load Balancer, Auto Scaling Group, and Security Groups.
+* Basic understanding of cloud computing concepts
+* AWS account or AWS Academy Lab access
+* An existing VPC and EC2 knowledge (from previous labs)
+* Basic knowledge of Linux commands and SQL
 
 ---
 
-# COMMANDS
+## Tools Used
 
-### AWS CLI Command to Create Application
-
-```bash
-aws elasticbeanstalk create-application \
---application-name SampleWebApp
-```
-
-### Create Environment
-
-```bash
-aws elasticbeanstalk create-environment \
---application-name SampleWebApp \
---environment-name SampleWebApp-env \
---solution-stack-name "64bit Amazon Linux 2023 v4.3.1 running Python 3.11"
-```
-
-### View Environment Status
-
-```bash
-aws elasticbeanstalk describe-environments
-```
-
-### List Application Versions
-
-```bash
-aws elasticbeanstalk describe-application-versions \
---application-name SampleWebApp
-```
+* AWS Management Console
+* Amazon EC2
+* Security Groups
+* SSH Client (Terminal / PuTTY)
+* MySQL / MariaDB / PostgreSQL (any one)
 
 ---
 
-# OUTPUT
+## Tasks Performed
 
-## Application Details
+### Task 1: Launch EC2 Instance for Database Server
 
-| Property         | Value            |
-| ---------------- | ---------------- |
-| Application Name | SampleWebApp     |
-| Environment Name | SampleWebApp-env |
-| Platform         | Python 3.11      |
-| Status           | Ready            |
-| Health           | Green            |
+Launch a new EC2 instance using Amazon Linux 2 AMI. Select an appropriate instance type and configure key pair and security group.
 
 ---
 
-## AWS Console Output
+### Task 2: Configure Security Group for Database Access
 
-### Elastic Beanstalk Dashboard
+Modify the security group to allow:
 
-```text
-Application Name : SampleWebApp
-Environment Name : SampleWebApp-env
-Status           : Ready
-Health           : Green
-URL              : http://samplewebapp-env.elasticbeanstalk.com
-```
+* SSH (Port 22) for remote access
+* Database port (e.g., MySQL – 3306 or PostgreSQL – 5432)
 
 ---
 
-### Environment Overview
+### Task 3: Connect to EC2 Instance
 
-```text
-Environment Health : Green
-Platform           : Python 3.11
-Instances Running  : 1
-Load Balancer      : Active
-Auto Scaling       : Enabled
-```
+Connect to the EC2 instance using SSH from your local machine.
 
 ---
 
-### Resources Created by Elastic Beanstalk
+### Task 4: Install Database Server
 
-```text
-EC2 Instance
-Elastic Load Balancer
-Auto Scaling Group
-Security Groups
-CloudWatch Alarms
-S3 Bucket
-```
+Install a database server software such as MySQL, MariaDB, or PostgreSQL on the EC2 instance using package manager commands.
 
 ---
 
-### Sample Application Output
+### Task 5: Start and Configure Database Service
 
-When the environment URL is opened:
-
-```html
-Congratulations!
-
-Your AWS Elastic Beanstalk application is now running successfully.
-```
+Start the database service and configure basic settings such as root password and user privileges.
 
 ---
 
-# SCREENSHOTS TO INCLUDE
+### Task 6: Create a Sample Database
 
-<img width="1375" height="449" alt="image" src="https://github.com/user-attachments/assets/0b63faf0-9201-4773-ba08-b63fd3e44e29" />
+Create a sample database and a table inside it. Insert a few records into the table.
 
+---
 
-<img width="1370" height="466" alt="image" src="https://github.com/user-attachments/assets/e48fb6ef-482f-4d42-b26a-dc71bc534b92" />
+### Task 7: Test Database Connectivity
 
+Test the database server by connecting to it locally or remotely and performing basic SQL queries.
 
-# RESULT
+---
 
-The AWS Elastic Beanstalk environment was successfully created, and a sample application was deployed. The application was accessed through the generated URL, and the supporting AWS resources such as EC2 Instance, Load Balancer, Auto Scaling Group, and Security Groups were explored successfully. Thus, the objectives of deploying and managing an application using AWS Elastic Beanstalk were achieved.
+## Workflow (Student Explanation)
+
+1. Launch an EC2 instance using Amazon Linux 2 AMI and select a suitable instance type. Configure key pair and security group to prepare the instance for database server deployment.
+2. Modify the Security Group to allow:
+
+SSH (Port 22) for remote login
+
+Database port (3306 for MySQL / 5432 for PostgreSQL)
+This ensures secure access to the database server.
+
+3. Connect to the EC2 instance using SSH and install a database server such as MySQL, MariaDB, or PostgreSQL using package manager commands.
+4. Start the database service, configure root credentials, and set user privileges. Create a sample database, table, and insert records to prepare the system for usage.
+5. Test the database by connecting locally or remotely and executing basic SQL queries. This confirms that the database server is functioning correctly.
+
+---
+
+## Output Screenshots (Attach 3)
+
+### Screenshot 1: EC2 Instance for Database Server
+
+<img width="1919" height="896" alt="Screenshot 2026-03-11 160405" src="https://github.com/user-attachments/assets/3e85a74c-ba9f-4e64-93fb-fb4032bef237" />
+
+---
+
+### Screenshot 2: Database Service Running
+
+<img width="1919" height="906" alt="Screenshot 2026-03-11 161131" src="https://github.com/user-attachments/assets/0317ae7e-65d2-4d98-8d09-68d36856113f" />
+
+---
+
+### Screenshot 3: Sample Database and Table
+
+<img width="1916" height="957" alt="Screenshot 2026-03-17 104504" src="https://github.com/user-attachments/assets/26258aa8-cb2f-4502-b2ec-46d502df82a8" />
+
+---
+
+## Result
+
+This experiment demonstrated how to build a database server in AWS using an EC2 instance. By installing and configuring a DBMS, creating a sample database, and testing connectivity, the fundamentals of hosting and managing a cloud-based database server were understood. The experiment also provided practical knowledge of cloud infrastructure, server configuration, database management, and remote access. Thus, a functional database server was successfully deployed and managed in the AWS cloud environment.
+
